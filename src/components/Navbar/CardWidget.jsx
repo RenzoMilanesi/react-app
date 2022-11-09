@@ -1,7 +1,9 @@
-
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 function CardWidget() {
   return (
-    <div>🛒</div>
+    <div><FontAwesomeIcon icon={faCartShopping} /></div>
   )
 }
 
