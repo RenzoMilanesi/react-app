@@ -1,6 +1,16 @@
+import Item from "./Item"
 
-function saludo(props){
-    const styleh1={color:props.color}
-    return(<h1 style={styleh1}>{props.greeting}</h1>)
+function ItemListContainer(props){
+    return(
+        <div>
+            <h1>Mis productos</h1>
+            <Item tittle="Parrilla" price={800} imgurl="/img/parrilla.JPG"/>
+            <Item tittle="Banqueta" price={1800} imgurl="/img/escritorio.JPG"/>
+            <Item tittle="Escritorio" price={500} imgurl="/img/banqueta.JPG"/>
+            <Item tittle="Mesada" price={10000} imgurl="/img/mesada.JPG"/>
+
+        </div>
+    )
+    
 }
-export default saludo;
+export default ItemListContainer;

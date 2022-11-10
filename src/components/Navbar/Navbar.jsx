@@ -5,8 +5,9 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CardWidget from "./CardWidget"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function NavScrollExample() {
+function NavScrollExample(props) {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
