@@ -7,11 +7,12 @@ export default function Item(props) {
   return (
     <div className='card'>
     <div className="card-img">
-    <img src={props.imgurl} alt={props.tittle} />
+    <img src={props.imgurl} alt={props.title} />
     </div>
     <div className='card-detail'>
-    <h3>{props.tittle}</h3>
+    <h3>{props.title}</h3>
     <p>${props.price}</p>
+    <p>{props.description}</p>
     </div>
     <Button variant="outline-success">Ver más</Button>{' '}
     </div>

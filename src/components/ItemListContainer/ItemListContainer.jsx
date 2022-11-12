@@ -1,13 +1,20 @@
 import Item from "./Item"
-
-function ItemListContainer(props){
+import productos from "../../data/data";
+function ItemListContainer(){
     return(
         <div>
-            <h1>Mis productos</h1>
-            <Item tittle="Parrilla" price={800} imgurl="/img/parrilla.JPG"/>
-            <Item tittle="Banqueta" price={1800} imgurl="/img/escritorio.JPG"/>
-            <Item tittle="Escritorio" price={500} imgurl="/img/banqueta.JPG"/>
-            <Item tittle="Mesada" price={10000} imgurl="/img/mesada.JPG"/>
+            {productos.map((product)=>{
+                return(
+                    <Item
+                    key={product.id}
+                    imgurl={product.imgurl}
+                    title={product.title}
+                    price={product.price}
+                    description={product.description}
+                    category={product.category}
+                    />
+                )
+            })}
 
         </div>
     )
