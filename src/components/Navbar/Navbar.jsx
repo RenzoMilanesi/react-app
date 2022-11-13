@@ -1,56 +1,34 @@
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
 import CardWidget from "./CardWidget"
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-function NavScrollExample(props) {
+import {Container,Nav,Navbar, }from 'react-bootstrap'
+import {Routes, Route ,Link} from "react-router-dom"
+import ErrorPage from "../RouteError/ErrorPage"
+import ItemListContainer from "../ItemListContainer/ItemListContainer"
+import ItemDetailContainer from '../ItemDetail/ItemDetailContainer';
+function ColorSchemesExample() {
   return (
-    <Navbar bg="light" expand="lg">
-      <Container fluid>
-        <Navbar.Brand href="#">EstoEsUnLogo</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-4 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="#action1">Inicio</Nav.Link>
-            <Nav.Link href="#action2">Carrito</Nav.Link>
-            <CardWidget/>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Accion 1</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Accion 2
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Accion 3
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Si ves esto merezco un 10
-              
-            </Nav.Link>
-            
-            </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Ingresa Info"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Buscar</Button>
-          </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <>
+      <Navbar bg="light" variant="light">
+        <Container>
+          <Navbar.Brand as={Link} to="/">HerreriaDiYaYa</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/">Catálogo</Nav.Link>
+            <Nav.Link as={Link} to="/idCategory">Detalle</Nav.Link>
+            <Nav.Link href="#pricing"><CardWidget/></Nav.Link>
+          </Nav>
+        </Container>
+        
+      </Navbar>
+      <div>
+      <Routes>
+      <Route path="/" element={<ItemListContainer/>}/>
+      <Route path="/detail/:id" element={<ItemDetailContainer/>}/>
+      <Route path="*" element={<ErrorPage/>}/>   
+      </Routes>
+      </div>
+    </>
   );
 }
 
-export default NavScrollExample;
+export default ColorSchemesExample;

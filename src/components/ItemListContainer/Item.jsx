@@ -2,8 +2,10 @@ import React from 'react'
 import "./item.css"
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Link } from 'react-router-dom';
 export default function Item(props) {
+  const urlDetail=`/detail/${props.id}`
+  
   return (
     <div className='card'>
     <div className="card-img">
@@ -14,7 +16,8 @@ export default function Item(props) {
     <p>${props.price}</p>
     <p>{props.description}</p>
     </div>
-    <Button variant="outline-success">Ver más</Button>{' '}
+    <Link to={urlDetail}><Button variant="outline-success">Ver más</Button>{' '}</Link>
+    
     </div>
   )
 }

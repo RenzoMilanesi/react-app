@@ -1,19 +1,32 @@
 /* -------------- BACK-END -------------- */
-import productos from "../data/data.js";
+import products from "../data/data";
 
-function getItems() {
+function getItems(idCategory) {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(productos);
-    }, 2000);
+    if (idCategory === undefined) {
+      setTimeout(() => {
+        resolve(products);
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        let itemsRequested = products.filter(
+          (item) => item.category === idCategory
+        );
+        resolve(itemsRequested);
+      }, 500);
+    }
   });
 }
 
-export function getSingleItem() {
-  return new Promise((resolve) => {
+export function getSingleItem(idParam) {
+  return new Promise((resolve, reject) => {
+    let itemRequested = products.find((item) => item.id === Number(idParam));
+
+    if (itemRequested === undefined) reject("Item no encontrado");
+
     setTimeout(() => {
-      resolve(productos[1]);
-    }, 2000);
+      resolve(itemRequested);
+    }, 500);
   });
 }
 
