@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getSingleItem } from "../../Services/mockServices";
-import Button from 'react-bootstrap/Button';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";

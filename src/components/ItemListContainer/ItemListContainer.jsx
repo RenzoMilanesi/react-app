@@ -4,17 +4,17 @@ import getItems from "../../Services/mockServices";
 import {useParams} from "react-router-dom"
 function ItemListContainer(){
     const [products, setProducts] = useState([]);
-    const paramsUrl=useParams().id;
+    const {idCategory} =useParams();
     
 
     async function getItemsAsync() {
-        let respuesta = await getItems();
+        let respuesta = await getItems(idCategory);
         setProducts(respuesta);
       }
     
       useEffect(() => {
         getItemsAsync();
-      }, []);
+      }, [idCategory]);
     
       return(
         <div>
@@ -28,6 +28,7 @@ function ItemListContainer(){
                     price={product.price}
                     description={product.description}
                     category={product.category}
+                    stock={product.stock}
                     />
                 )
             })}

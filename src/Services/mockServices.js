@@ -6,7 +6,8 @@ function getItems(idCategory) {
     if (idCategory === undefined) {
       setTimeout(() => {
         resolve(products);
-      }, 2000);
+      }, 500);
+
     } else {
       setTimeout(() => {
         let itemsRequested = products.filter(
