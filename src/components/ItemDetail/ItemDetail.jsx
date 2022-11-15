@@ -10,6 +10,7 @@ function ItemDetail({ product }) {
     <h3>{product.title}</h3>
     <p>${product.price}</p>
     <p>{product.description}</p>
+    <p>Stock: {product.stock}</p>
     </div>
     </div>
   );
