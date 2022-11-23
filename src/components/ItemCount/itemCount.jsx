@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function ItemCount({ stock, onAddToCart }) {
   const [count, setCount] = useState(1);
@@ -13,19 +13,24 @@ function ItemCount({ stock, onAddToCart }) {
     if (count > 1) setCount(count - 1);
   }
 
-  function onAddToCart(){
-    console.log({count},"Item(s) agregado(s)")
-  }
+/*  function onAddToCart() {
+    console.log({ count }, "Item(s) agregado(s)");
+  } */
   return (
     <div>
       <div>
-      <Button variant="outline-primary" onClick={handleSubstract}>-</Button>
+        <Button variant="outline-primary" onClick={handleSubstract}>
+          -
+        </Button>
         <span>{count}</span>
-        <Button variant="outline-danger" onClick={handleAdd}>+</Button>
+        <Button variant="outline-danger" onClick={handleAdd}>
+          +
+        </Button>
       </div>
       <div className="itemcount_btns">
-        {/* 3. agregar un onClick con el evento recibido por Props */}
-        <Button variant="outline-success" onClick={() => onAddToCart(count)}>Agregar al carrito</Button>
+        <Button variant="outline-success" onClick={() => onAddToCart(count)}>
+          Agregar al carrito
+        </Button>
       </div>
     </div>
   );
