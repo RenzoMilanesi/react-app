@@ -21,7 +21,7 @@ function ColorSchemesExample() {
             <Nav.Link as={Link} to="/category/Patio">
               Patio
             </Nav.Link>
-            <Nav.Link href="/">
+            <Nav.Link as={Link} to="/cart">
               <CardWidget />
             </Nav.Link>
           </Nav>

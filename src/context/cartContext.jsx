@@ -32,7 +32,7 @@ export function CartContextProvider(props) {
   function removeItem(id){
     cart.filter((id) => cart.id === id);
   }
-  
+  function clear(){}
   
   function ItemsInCart(){
     let total=0; 
@@ -50,7 +50,7 @@ export function CartContextProvider(props) {
   }
   return (
     <>
-      <cartContext.Provider value={{ ItemsInCart, addToCart ,removeItem,priceInCart}}>
+      <cartContext.Provider value={{ ItemsInCart, addToCart ,removeItem,priceInCart,cart,clear}}>
         {props.children}
       </cartContext.Provider>
     </>

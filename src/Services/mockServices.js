@@ -6,7 +6,7 @@ function getItems(idCategory) {
     if (idCategory === undefined) {
       setTimeout(() => {
         resolve(products);
-      }, 500);
+      }, 2000);
 
     } else {
       setTimeout(() => {
@@ -14,7 +14,7 @@ function getItems(idCategory) {
           (item) => item.category === idCategory
         );
         resolve(itemsRequested);
-      }, 500);
+      }, 2000);
     }
   });
 }
@@ -27,7 +27,7 @@ export function getSingleItem(idParam) {
 
     setTimeout(() => {
       resolve(itemRequested);
-    }, 500);
+    }, 2000);
   });
 }
 

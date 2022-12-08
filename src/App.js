@@ -5,6 +5,7 @@ import ErrorPage from "./components/RouteError/ErrorPage";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 import { CartContextProvider } from "./context/cartContext";
+import CartView from "./components/CartView/CartView";
 function App() {
   return (
     <div className="App">
@@ -18,7 +19,7 @@ function App() {
               path="/category/:idCategory"
               element={<ItemListContainer />}
             />
-            <Route path="*" element={<ErrorPage />} />
+            <Route path="/cart" element={<CartView/>}/> 
           </Routes>
         </BrowserRouter>
       </CartContextProvider>
