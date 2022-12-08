@@ -7,7 +7,7 @@ import {cartContext} from "../../context/cartContext"
 
 function ItemDetail({ product }) {
   const { addToCart } = useContext(cartContext);
-  const{isInCart,setIsInCart}=useState(false)
+  
   function onAddToCart(count) {
     alert(`Agregaste ${count} items al carrito!`);
     /* setState(count) */

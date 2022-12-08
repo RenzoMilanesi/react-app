@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getSingleItem } from "../../Services/mockServices";
+import { getSingleItem } from "../../Services/firebase";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
