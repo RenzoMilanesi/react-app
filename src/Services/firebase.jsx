@@ -76,7 +76,7 @@ export default async function getItems() {
 
 
   
-/* subir productos en masa , 
+ /* Subir productos en masa
 export async function subircosasfirestore(){
   const productos = [
     {
