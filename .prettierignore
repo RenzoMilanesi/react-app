@@ -1,0 +1,6 @@
+build/static
+package-lock.json
+package.json
+public/index.html
+README.md
+.eslintrc.js

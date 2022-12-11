@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ItemCount({ stock, onAddToCart }) {
   const [count, setCount] = useState(1);
@@ -16,16 +16,16 @@ function ItemCount({ stock, onAddToCart }) {
   return (
     <div>
       <div>
-        <Button variant="outline-primary" onClick={handleSubstract}>
+        <Button variant='outline-primary' onClick={handleSubstract}>
           -
         </Button>
         <span>{count}</span>
-        <Button variant="outline-danger" onClick={handleAdd}>
+        <Button variant='outline-danger' onClick={handleAdd}>
           +
         </Button>
       </div>
-      <div className="itemcount_btns">
-        <Button variant="outline-success" onClick={() => onAddToCart(count)}>
+      <div className='itemcount_btns'>
+        <Button variant='outline-success' onClick={() => onAddToCart(count)}>
           Agregar al carrito
         </Button>
       </div>

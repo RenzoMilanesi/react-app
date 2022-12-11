@@ -1,82 +1,78 @@
-
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import {
-    addDoc,
-    getFirestore,
-    collection,
-    doc,
-    getDocs,
-    getDoc,  
-    query,
-    where
-  } from "firebase/firestore";
-  
+  addDoc,
+  getFirestore,
+  collection,
+  doc,
+  getDocs,
+  getDoc,
+  query,
+  where,
+} from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD50JBfLOvdW-3BL7N8yzPXrgc2q5pIDk4",
-  authDomain: "react2022-fda33.firebaseapp.com",
-  projectId: "react2022-fda33", 
-  storageBucket: "react2022-fda33.appspot.com",
-  messagingSenderId: "539628603886",
-  appId: "1:539628603886:web:5a1971dac9b974f4aba6ff"
+  apiKey: 'AIzaSyD50JBfLOvdW-3BL7N8yzPXrgc2q5pIDk4',
+  authDomain: 'react2022-fda33.firebaseapp.com',
+  projectId: 'react2022-fda33',
+  storageBucket: 'react2022-fda33.appspot.com',
+  messagingSenderId: '539628603886',
+  appId: '1:539628603886:web:5a1971dac9b974f4aba6ff',
 };
-
 
 const app = initializeApp(firebaseConfig);
 const DB = getFirestore(app);
 
-
 export default async function getItems() {
-    const colectionProductsRef = collection(DB, "products");
-    const documentSnapshot = await getDocs(colectionProductsRef);
-    const documentsData = documentSnapshot.docs.map((doc) => {
-      return {
-        ...doc.data(),
-        id: doc.id,
-      };
-    });
+  const colectionProductsRef = collection(DB, 'products');
+  const documentSnapshot = await getDocs(colectionProductsRef);
+  const documentsData = documentSnapshot.docs.map(doc => {
+    return {
+      ...doc.data(),
+      id: doc.id,
+    };
+  });
 
-    return documentsData;
+  return documentsData;
+}
+
+export async function getSingleItem(idParams) {
+  const docRef = doc(DB, 'products', idParams);
+
+  const docSnapshot = await getDoc(docRef);
+
+  const itemData = docSnapshot.data();
+  itemData.id = docSnapshot.id;
+
+  return itemData;
+}
+
+export async function getItemsByCategory(categoryParams) {
+  const collectionRef = collection(DB, 'products');
+  const queryCat = query(
+    collectionRef,
+    where('category', '==', categoryParams)
+  );
+  const documentSnapshot = await getDocs(queryCat);
+  const documentsData = documentSnapshot.docs.map(doc => {
+    return {
+      ...doc.data(),
+      id: doc.id,
+    };
+  });
+  return documentsData;
+}
+
+export async function createOrder(order) {
+  const collectionRef = collection(DB, 'orders');
+  try {
+    const docOrder = await addDoc(collectionRef, order);
+    return docOrder.id;
+  } catch (error) {
+    console.error('Error :', error);
   }
+}
 
-  export async function getSingleItem(idParams) {
-    const docRef = doc(DB, "products", idParams);
-  
-    const docSnapshot = await getDoc(docRef);
-  
-    const itemData = docSnapshot.data();
-    itemData.id = docSnapshot.id;
-  
-    return itemData;
-  }
-
-
-  export async function getItemsByCategory(categoryParams) {
-    const collectionRef = collection(DB, "products");   
-    const queryCat = query(collectionRef, where("category", "==",categoryParams ))
-    const documentSnapshot = await getDocs(queryCat);
-    const documentsData = documentSnapshot.docs.map((doc) => {
-      return {
-        ...doc.data(),
-        id: doc.id,
-      };
-    });
-    return documentsData;
-  }
-
-  export async function createOrder(order){
-    const collectionRef=collection(DB,"orders")
-    try{
-    const docOrder=await addDoc(collectionRef,order);
-    return docOrder.id
-    }
-    catch(error) {
-      console.error("Error :", error)}
-  }
-
-
-  
- /* Subir productos en masa
+/* Subir productos en masa
 export async function subircosasfirestore(){
   const productos = [
     {
@@ -157,4 +153,4 @@ export async function subircosasfirestore(){
     let docOrder= await addDoc(collectionRef,item)
     console.log("Documento Creado, id: ",docOrder.id)
   }
-}*/
+} */
