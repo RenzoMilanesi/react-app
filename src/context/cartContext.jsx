@@ -1,26 +1,20 @@
 import { useState } from "react";
 import { createContext } from "react";
-/*Importamos E inicializamos el contexto con createContext*/
 export const cartContext = createContext();
 
-//2. Creamos nuestro Context Provider
 export function CartContextProvider(props) {
-
-
-  //3.Retornamos el Provider del context creado
   const [cart, setCart] = useState([]);
- //Agregado al carrito usando spread
   function addToCart(product, count) {
-    //encuentra el index del item repetido en el cart para despues sumar su count con el actual   
+    
     let ItemAlreadyInCart=cart.findIndex((ItemsInCart)=>ItemsInCart.id===product.id)
     let newCart=[...cart];
     
-    if(ItemAlreadyInCart !==-1)//Si esta sumo sus cantidades
+    if(ItemAlreadyInCart !==-1)
     {
       newCart[ItemAlreadyInCart].count+=count;
       setCart(newCart)
     }
-    else//si no esta se agrega el item con el count seleccionado
+    else
     {
       product.count = count;
       newCart.push(product);
@@ -28,11 +22,15 @@ export function CartContextProvider(props) {
     }   
   }
 
-//Completar removeri item
   function removeItem(id){
-    cart.filter((id) => cart.id === id);
+    console.log("Eliminando el item:", id);
+    const newCart = [...cart];
+    newCart.pop();
+    setCart(newCart);
   }
-  function clear(){}
+  function clear(){
+    setCart([]);
+  }
   
   function ItemsInCart(){
     let total=0; 
@@ -40,11 +38,11 @@ export function CartContextProvider(props) {
     return total;
   }
   
-/*No funciona revisar*/
+
   function priceInCart(){
     let precio=0; 
-    cart.forEach((ItemsInCart)=>(precio=precio+(ItemsInCart.price*ItemsInCart.count)))
-    console.log(precio)
+    cart.forEach((producto)=>(precio=precio+(producto.price*producto.count)))
+
     return precio;
     
   }
