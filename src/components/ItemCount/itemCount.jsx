@@ -13,9 +13,6 @@ function ItemCount({ stock, onAddToCart }) {
     if (count > 1) setCount(count - 1);
   }
 
-/*  function onAddToCart() {
-    console.log({ count }, "Item(s) agregado(s)");
-  } */
   return (
     <div>
       <div>

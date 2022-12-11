@@ -8,7 +8,8 @@ function CardWidget() {
   const miContext=useContext(cartContext)
   return ( 
     <div>
-      <FontAwesomeIcon icon={faCartShopping} /><span>{miContext.ItemsInCart()}</span>
+      <FontAwesomeIcon icon={faCartShopping} />
+      {miContext.ItemsInCart()!==0 && <span>{miContext.ItemsInCart()}</span>}
     </div>
   );
 }

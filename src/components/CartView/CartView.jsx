@@ -35,7 +35,7 @@ navigate(`/thankyou/${orderId}`)
         cart.map((item) => 
         <div key={item.id} className="card">
             <div className="card-img">
-            <img src={item.imgurl}></img>
+            <img src={item.imgurl} alt={item.title}></img>
             </div>
             <h2>{item.title}</h2>
             <h2>$ {item.price}</h2>
