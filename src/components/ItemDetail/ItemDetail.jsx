@@ -1,16 +1,16 @@
 import ItemCount from "../ItemCount/itemCount";
 import {useContext,useState} from  "react"
 import {cartContext} from "../../context/cartContext"
-
-
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 
 function ItemDetail({ product }) {
   const { addToCart } = useContext(cartContext);
-  
+  const [isInCart, setIsInCart] = useState(false);
   function onAddToCart(count) {
-    alert(`Agregaste ${count} items al carrito!`);
-    /* setState(count) */
+    setIsInCart(count);
     addToCart(product, count);
   }
 
@@ -26,7 +26,13 @@ function ItemDetail({ product }) {
         <p>Categoria: {product.category}</p>
         <p>Stock: {product.stock}</p>
       </div>
-      <ItemCount stock={product.stock} onAddToCart={onAddToCart}/>
+      {isInCart ? (
+        <Link to="/cart">
+          <Button variant="outline-success">Ir al Carrito</Button>
+        </Link>
+      ) : (
+        <ItemCount onAddToCart={onAddToCart} stock={product.stock} />
+      )}
     </div>
   );
 

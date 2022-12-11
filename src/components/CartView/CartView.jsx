@@ -10,7 +10,7 @@ import "./CartView.css"
 
 export default  function CartView() {
     let navigate = useNavigate();
-    const {cart,clear,priceInCart}=useContext(cartContext)
+    const {cart,clear,priceInCart,removeItem}=useContext(cartContext)
     if(cart.length ===0) return <h1>Carrito Vacio</h1>
 
     async function handleCheckout(evt,data){
@@ -40,6 +40,10 @@ navigate(`/thankyou/${orderId}`)
             <h2>{item.title}</h2>
             <h2>$ {item.price}</h2>
             <h2>Unidades: {item.count}</h2>
+            <Button onClick={removeItem} variant="outline-danger">
+              X
+            </Button>
+            
             
         </div>
         
