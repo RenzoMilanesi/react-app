@@ -8,7 +8,7 @@ import CartForm from './CartForm';
 import './CartView.css';
 
 export default function CartView() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const { cart, clear, priceInCart, removeItem } = useContext(cartContext);
   if (cart.length === 0) return <h1>Carrito Vacio</h1>;
 
